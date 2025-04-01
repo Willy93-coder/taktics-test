@@ -1,0 +1,26 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    networks:
+      - frontend_network
+  backend:
+    container_name: backend
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - frontend_network
+networks:
+  frontend_network:
+    driver: bridge
