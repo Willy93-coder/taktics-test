@@ -39,6 +39,7 @@ const webpackConfig = {
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
+          presets: ['@babel/preset-env'],
         },
       },
       {
@@ -63,6 +64,8 @@ const webpackConfig = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './build',
+    port: 9000,
+    host: '0.0.0.0',
   },
   plugins: [
     new webpack.ProvidePlugin({}),

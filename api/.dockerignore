@@ -1,0 +1,22 @@
+# Node dependencies and build artifacts
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Files and local configuration
+.env
+.env.local
+.DS_Store
+
+# Builds and cache
+logs
+*.log
+npm-cache
+.cache
+
+# Git versions and editor files
+.git
+.gitignore
+.idea
+.vscode
