@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 9000:9000
+    volumes:
+      - admin_data:/app
     environment:
       - NODE_ENV=development
     depends_on:
@@ -19,8 +21,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:3000
+    volumes:
+      - api_data:/app
     networks:
       - frontend_network
+volumes:
+  admin_data:
+  api_data:
 networks:
   frontend_network:
     driver: bridge
