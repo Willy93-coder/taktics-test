@@ -8,8 +8,12 @@
   "replaceOnPUT": false,
   "mixins": {},
   "properties": {
-    "name":  { "type": "string"},
-    "email": { "type": "string" }
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
   },
   "validations": [],
   "relations": {},
