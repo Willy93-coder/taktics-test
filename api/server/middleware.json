@@ -63,7 +63,9 @@
       "params": {
         "debug": false,
         "log": true,
-        "safeFields": ["errors"]
+        "safeFields": [
+          "errors"
+        ]
       }
     }
   }
