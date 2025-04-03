@@ -52,5 +52,13 @@
   "Chapter": {
     "dataSource": "db",
     "public": true
+  },
+  "Container": {
+    "dataSource": "images",
+    "public": true
+  },
+  "files": {
+    "dataSource": "db",
+    "public": true
   }
 }

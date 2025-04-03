@@ -20,7 +20,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
     "loopback-component-passport": "^2.3.0",
-    "loopback-component-storage": "^1.9.2",
+    "loopback-component-storage": "^1.10.1",
     "loopback-connector-rest": "^2.1.0",
     "loopback-context": "^1.0.0",
     "multiparty": "^4.2.3",
