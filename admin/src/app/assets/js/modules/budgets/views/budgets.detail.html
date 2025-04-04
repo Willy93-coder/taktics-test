@@ -1,0 +1,144 @@
+<section class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 ng-controller="BudgetsDetailController as vm">
+        {{vm.isNew ? 'Create Budget' : 'Edit Budget'}}
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <!-- formulario -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" ng-model="vm.budget.name" />
+      </div>
+      <div class="form-group">
+        <label>Client</label>
+        <input type="text" class="form-control" ng-model="vm.budget.clientName" />
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" class="form-control" ng-model="vm.budget.date" />
+      </div>
+      <div class="form-group">
+        <label>Total Cost</label>
+        <input type="number" class="form-control" ng-model="vm.budget.totalCostImport" disabled />
+      </div>
+      <div class="form-group">
+        <label>Total Sale</label>
+        <input type="number" class="form-control" ng-model="vm.budget.totalSaleImport" disabled />
+      </div>
+
+      <!-- Thumbnail -->
+      <div class="form-group">
+        <img ng-if="vm.budget.thumbnail" ng-src="{{vm.budget.thumbnail}}" width="100" style="margin-bottom: 10px;" />
+        <button class="btn btn-danger btn-sm" ng-click="vm.deleteThumbnail()" ng-if="vm.budget.thumbnail">Delete
+          Thumbnail</button>
+        <div class="mt-2">
+          <input type="file" file-model="vm.newThumbnail" />
+          <button class="btn btn-primary" ng-click="vm.uploadThumbnail()">Upload</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- tabla Chapters & Batches -->
+
+    <div class="col-xs-12">
+      <button class="btn btn-success" ng-click="vm.addChapter()" style="margin-bottom: 10px;">
+        Add Chapter
+      </button>
+    </div>
+    <div class="col-xs-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Description</th>
+            <th>Labour Coef.</th>
+            <th>Material Coef.</th>
+            <th>Quantity</th>
+            <th>Labour Cost</th>
+            <th>Material Cost</th>
+            <th>Unit Cost</th>
+            <th>Unit Sale</th>
+            <th>Total Cost</th>
+            <th>Total Sale</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas de Chapter -->
+          <tr ng-repeat-start="ch in vm.budget.chapters">
+            <td>{{ch.rank}}</td>
+            <td>
+              <input type="text" class="form-control" ng-model="ch.description" />
+            </td>
+            <td>
+              <input type="number" class="form-control" ng-model="ch.saleCoefficientLabour" />
+            </td>
+            <td>
+              <input type="number" class="form-control" ng-model="ch.saleCoefficientMaterial" />
+            </td>
+            <!-- quantity, labour cost, etc. no se editan a nivel chapter -->
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ch.totalCostImport}}</td>
+            <td>{{ch.totalSaleImport}}</td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-info btn-sm" ng-click="vm.addBatch(ch)">
+                  Add Batch
+                </button>
+                <button class="btn btn-danger btn-sm" ng-click="vm.deleteChapter(ch)">
+                  Delete Chapter
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Filas de Batches dentro de cada chapter -->
+          <tr ng-repeat="b in ch.batches" ng-repeat-end>
+            <td>{{ch.rank}}.{{b.rank}}</td>
+            <td>
+              <input type="text" class="form-control" ng-model="b.description" />
+            </td>
+            <!-- labourCoef y materialCoef se definen en el chapter -->
+            <td colspan="2"></td>
+            <td>
+              <input type="number" class="form-control" ng-model="b.amount" />
+            </td>
+            <td>
+              <input type="number" class="form-control" ng-model="b.labourCostImport" />
+            </td>
+            <td>
+              <input type="number" class="form-control" ng-model="b.materialCostImport" />
+            </td>
+            <td>{{b.unitaryCostImport}}</td>
+            <td>{{b.unitarySaleCost}}</td>
+            <td>{{b.totalCostImport}}</td>
+            <td>{{b.totalSaleImport}}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" ng-click="vm.deleteBatch(ch, b)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          <!-- Fin de repetición Chapter/Batch -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Botones de Acción al Final -->
+  <div class="row">
+    <div class="col-xs-12 text-right">
+      <button class="btn btn-primary" ng-click="vm.saveBudget()">
+        Save
+      </button>
+    </div>
+  </div>
+</section>

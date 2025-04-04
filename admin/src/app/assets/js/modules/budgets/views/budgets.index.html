@@ -1,5 +1,75 @@
-<section class="forms-basic">
-  <div class="page-header">
+<section class="container">
+  <div class="row mb-3">
     <h1>Budgets</h1>
+
+    <div class="form-group">
+      <input type="text" class="form-control" ng-model="vm.filter.clientName" placeholder="Client" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" ng-model="vm.filter.name" placeholder="Name" />
+    </div>
+    <div class="form-group">
+      <label>From:</label>
+      <input type="date" class="form-control" ng-model="vm.filter.dateFrom" />
+    </div>
+    <div class="form-group">
+      <label>To:</label>
+      <input type="date" class="form-control" ng-model="vm.filter.dateTo" />
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <button class="btn btn-primary" ng-click="vm.goCreate()">
+        Create
+      </button>
+    </div>
+
+
+    <!-- Pagination -->
+    <div>
+      <select ng-model="vm.pageSize" ng-change="vm.loadBudgets()">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+
+      <button ng-disabled="vm.currentPage <= 0" ng-click="vm.prevPage()">Previous</button>
+      {{vm.currentPage + 1}}
+      <button ng-disabled="vm.budgets.length < vm.pageSize" ng-click="vm.nextPage()">Next</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" ng-model="vm.selectAll" ng-change="vm.toggleAll()"></th>
+          <th>Name</th>
+          <th>Thumbnail</th>
+          <th>Date</th>
+          <th>Client</th>
+          <th>Total Cost</th>
+          <th>Total Sale</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="b in vm.budgets">
+          <td><input type="checkbox" ng-model="b._selected" ng-change="vm.checkSelection()"></td>
+          <td>{{b.name}}</td>
+          <td><img ng-if="b.thumbnail" ng-src="{{b.thumbnail}}" width="50" /></td>
+          <td>{{b.date | date}}</td>
+          <td>{{b.clientName}}</td>
+          <td>{{b.totalCostImport}}</td>
+          <td>{{b.totalSaleImport}}</td>
+          <td>
+            <button ng-click="vm.editBudget(b)">Edit</button>
+            <button ng-click="vm.deleteBudget(b)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Actions -->
+    <div ng-if="vm.selectedBudgets.length > 0">
+      <button ng-click="vm.deleteMultiple()">Delete Selected</button>
+      <button ng-click="vm.mergeSelected()">Merge Selected</button>
+    </div>
   </div>
 </section>
