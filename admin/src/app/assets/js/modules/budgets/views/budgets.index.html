@@ -16,27 +16,30 @@
       <label>To:</label>
       <input type="date" class="form-control" ng-model="vm.filter.dateTo" />
     </div>
-    <div style="margin-bottom: 1rem;">
+    <div class="text-right" style="margin-bottom: 1rem;">
       <button class="btn btn-primary" ng-click="vm.goCreate()">
         Create
       </button>
     </div>
 
-
     <!-- Pagination -->
-    <div>
-      <select ng-model="vm.pageSize" ng-change="vm.loadBudgets()">
-        <option value="10">10</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
+    <div class="row">
+      <div class="form-inline">
+        <select class="form-control" style="margin-right: 2rem;" id="pageSize" ng-model="vm.pageSize"
+          ng-change="vm.loadBudgets()">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
 
-      <button ng-disabled="vm.currentPage <= 0" ng-click="vm.prevPage()">Previous</button>
-      {{vm.currentPage + 1}}
-      <button ng-disabled="vm.budgets.length < vm.pageSize" ng-click="vm.nextPage()">Next</button>
+        <button class="btn btn-success" ng-disabled="vm.currentPage <= 0" ng-click="vm.prevPage()">Previous</button>
+        <span style="padding-left: 2rem; padding-right: 2rem;">{{vm.currentPage + 1}}</span>
+        <button class="btn btn-success" ng-disabled="vm.budgets.length < vm.pageSize"
+          ng-click="vm.nextPage()">Next</button>
+      </div>
     </div>
-    <table>
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th><input type="checkbox" ng-model="vm.selectAll" ng-change="vm.toggleAll()"></th>
