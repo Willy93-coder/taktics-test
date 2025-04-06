@@ -1,6 +1,6 @@
 import angular from 'angular';
 import budgetsUrl from './views/budgets.index.html';
-import budgetsDetailUrl from './views/budgets.detail.html';
+import budgetsDetailUrl from './views/budgets.detail.index.html';
 import BudgetsController from './controllers/budgets.index.controller';
 import BudgetsDetailController from './controllers/budgets.detail.controller';
 import BudgetService from './services/budget.service';
