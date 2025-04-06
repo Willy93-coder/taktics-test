@@ -66,6 +66,13 @@ const webpackConfig = {
     contentBase: './build',
     port: 9000,
     host: '0.0.0.0',
+    proxy: {
+      '/api': {
+        target: 'http://backend:3000',
+        secure: false,
+        changeOrigin: true,
+      }
+    }
   },
   plugins: [
     new webpack.ProvidePlugin({}),
