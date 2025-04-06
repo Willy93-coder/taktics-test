@@ -58,9 +58,9 @@
           <td>{{b.name}}</td>
           <td><img ng-if="b.thumbnail" ng-src="{{b.thumbnail}}" width="50" /></td>
           <td>{{b.date | date}}</td>
-          <td>{{b.clientName}}</td>
-          <td>{{b.totalCostImport}}</td>
-          <td>{{b.totalSaleImport}}</td>
+          <td>{{b.client_name}}</td>
+          <td>{{b.total_cost_import}}</td>
+          <td>{{b.total_sale_import}}</td>
           <td>
             <button ng-click="vm.editBudget(b)">Edit</button>
             <button ng-click="vm.deleteBudget(b)">Delete</button>

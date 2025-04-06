@@ -80,8 +80,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>{{ch.totalCostImport}}</td>
-            <td>{{ch.totalSaleImport}}</td>
+            <td>{{ch.total_cost_import}}</td>
+            <td>{{ch.sale_cost_import}}</td>
             <td>
               <div class="btn-group">
                 <button class="btn btn-info btn-sm" ng-click="vm.addBatch(ch)">
@@ -109,10 +109,10 @@
             <td>
               <input type="number" class="form-control" ng-model="b.materialCostImport" />
             </td>
-            <td>{{b.unitaryCostImport}}</td>
-            <td>{{b.unitarySaleCost}}</td>
-            <td>{{b.totalCostImport}}</td>
-            <td>{{b.totalSaleImport}}</td>
+            <td>{{b.unitary_cost}}</td>
+            <td>{{b.unitary_sale}}</td>
+            <td>{{b.total_cost}}</td>
+            <td>{{b.total_sale}}</td>
             <td>
               <button class="btn btn-danger btn-sm" ng-click="vm.deleteBatch(ch, b)">
                 Delete
