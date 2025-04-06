@@ -1,13 +1,12 @@
 <section class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2 ng-controller="BudgetsDetailController as vm">
+      <h2>
         {{vm.isNew ? 'Create Budget' : 'Edit Budget'}}
       </h2>
     </div>
   </div>
   <div class="row">
-    <!-- formulario -->
     <div class="col-md-6">
       <div class="form-group">
         <label>Name</label>
@@ -30,7 +29,6 @@
         <input type="number" class="form-control" ng-model="vm.budget.totalSaleImport" disabled />
       </div>
 
-      <!-- Thumbnail -->
       <div class="form-group">
         <img ng-if="vm.budget.thumbnail" ng-src="{{vm.budget.thumbnail}}" width="100" style="margin-bottom: 10px;" />
         <button class="btn btn-danger btn-sm" ng-click="vm.deleteThumbnail()" ng-if="vm.budget.thumbnail">Delete
@@ -42,10 +40,8 @@
       </div>
     </div>
 
-    <!-- tabla Chapters & Batches -->
-
     <div class="col-xs-12">
-      <button class="btn btn-success" ng-click="vm.addChapter()" style="margin-bottom: 10px;">
+      <button class="btn btn-success text-right" ng-click="vm.addChapter()" style="margin-bottom: 10px;">
         Add Chapter
       </button>
     </div>
@@ -68,7 +64,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Filas de Chapter -->
           <tr ng-repeat-start="ch in vm.budget.chapters">
             <td>{{ch.rank}}</td>
             <td>
@@ -80,7 +75,6 @@
             <td>
               <input type="number" class="form-control" ng-model="ch.saleCoefficientMaterial" />
             </td>
-            <!-- quantity, labour cost, etc. no se editan a nivel chapter -->
             <td></td>
             <td></td>
             <td></td>
@@ -100,13 +94,11 @@
             </td>
           </tr>
 
-          <!-- Filas de Batches dentro de cada chapter -->
           <tr ng-repeat="b in ch.batches" ng-repeat-end>
             <td>{{ch.rank}}.{{b.rank}}</td>
             <td>
               <input type="text" class="form-control" ng-model="b.description" />
             </td>
-            <!-- labourCoef y materialCoef se definen en el chapter -->
             <td colspan="2"></td>
             <td>
               <input type="number" class="form-control" ng-model="b.amount" />
@@ -127,13 +119,11 @@
               </button>
             </td>
           </tr>
-          <!-- Fin de repetición Chapter/Batch -->
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Botones de Acción al Final -->
   <div class="row">
     <div class="col-xs-12 text-right">
       <button class="btn btn-primary" ng-click="vm.saveBudget()">
